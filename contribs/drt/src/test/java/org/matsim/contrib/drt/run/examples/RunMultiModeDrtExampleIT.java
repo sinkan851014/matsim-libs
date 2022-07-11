@@ -31,6 +31,6 @@ public class RunMultiModeDrtExampleIT {
 	public void testRun() {
 		URL configUrl = IOUtils.extendUrl(ExamplesUtils.getTestScenarioURL("dvrp-grid"),
 				"multi_mode_one_shared_taxi_config.xml");
-		RunMultiModeDrtExample.run(configUrl, false, 0);
+		RunMultiModeDrtExample.run(configUrl, false, 10);
 	}
 }

@@ -51,12 +51,12 @@ public class CreateTaxiVehicles {
 	 */
 	public static void main(String[] args) {
 		Scenario scenario = ScenarioUtils.createScenario(ConfigUtils.createConfig());
-		int numberofVehicles = 5000;
+		int numberofVehicles = 100;
 		double operationStartTime = 0.; //t0
 		double operationEndTime = 24*3600.;	//t1
 		int seats = 4;
-		String networkfile = "cottbus_robotaxi/network.xml.gz";
-		String taxisFile = "./src/main/resources/cottbus_robotaxi/taxis_"+numberofVehicles+".xml";
+		String networkfile = "C:\\Users\\sinkai\\IdeaProjects\\matsim-libs2\\examples\\scenarios\\dvrp-grid\\TaoyuanCity_boundary_3826_fixed.xml";
+		String taxisFile = "C:\\Users\\sinkai\\IdeaProjects\\matsim-libs2\\examples\\scenarios\\dvrp-grid\\taxis_"+numberofVehicles+".xml";
 		List<DvrpVehicleSpecification> vehicles = new ArrayList<>();
 		Random random = MatsimRandom.getLocalInstance();
 		new MatsimNetworkReader(scenario.getNetwork()).readFile(networkfile);
@@ -69,7 +69,7 @@ public class CreateTaxiVehicles {
 			}
 			while (!startLink.getAllowedModes().contains(TransportMode.car));
 			//for multi-modal networks: Only links where cars can ride should be used.
-			vehicles.add(ImmutableDvrpVehicleSpecification.newBuilder().id(Id.create("taxi" + i, DvrpVehicle.class))
+			vehicles.add(ImmutableDvrpVehicleSpecification.newBuilder().id(Id.create("drt_carSharing" + i, DvrpVehicle.class))
 					.startLinkId(startLink.getId())
 					.capacity(seats)
 					.serviceBeginTime(operationStartTime)
