@@ -98,7 +98,7 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="population_scenario.xml"/>
+		<param name="inputPlansFile" value="output_plans.xml"/>
 	</module>
 
 	<module name="vehicles">
@@ -109,7 +109,9 @@
 		<param name="simStarttimeInterpretation" value="onlyUseStarttime"/>
 		<param name="insertingWaitingVehiclesBeforeDrivingVehicles" value="true"/>
 		<param name="snapshotStyle" value="queue"/>
-		<param name="mainMode" value="car,drt_autonomous,drt_autonomousForCarSharing,drt_autonomousForRideSharing" />
+		<param name="flowCapacityFactor" value="0.0055" />
+		<param name="storageCapacityFactor" value="0.0055" />
+
 	</module>
 
 	<module name="otfvis">
@@ -173,7 +175,7 @@
 		<param name="mode" value="car" />
 		<param name="marginalUtilityOfTraveling_util_hr" value="-126.6" />
 		<param name="monetaryDistanceRate" value="-0.00346" />
-		<param name="constant" value="230.0" />
+		<param name="constant" value="20.0" />
 	</parameterset>
 
 	<parameterset type="modeParams" >
@@ -190,25 +192,31 @@
 		<param name="constant" value="0" />
 	</parameterset>
 
+		<parameterset type="modeParams" >
+			<param name="mode" value="walk" />
+			<param name="marginalUtilityOfTraveling_util_hr" value="-111.6" />
+			<param name="constant" value="0" />
+		</parameterset>
+
 	<parameterset type="modeParams" >
 		<param name="mode" value="drt_autonomous" />
 		<param name="marginalUtilityOfTraveling_util_hr" value="-63.3" />
 		<param name="monetaryDistanceRate" value="-0.00359555" />
-		<param name="constant" value="230" />
+		<param name="constant" value="20" />
 	</parameterset>
 
 	<parameterset type="modeParams" >
 		<param name="mode" value="drt_autonomousForCarSharing" />
-		<param name="marginalUtilityOfTraveling_util_hr" value="-126.6" />
+		<param name="marginalUtilityOfTraveling_util_hr" value="-82.9" />
 		<param name="monetaryDistanceRate" value="-0.00290355" />
-		<param name="constant" value="230" />
+		<param name="constant" value="20" />
 	</parameterset>
 
 	<parameterset type="modeParams" >
 		<param name="mode" value="drt_autonomousForRideSharing" />
-		<param name="marginalUtilityOfTraveling_util_hr" value="-126.6" />
+		<param name="marginalUtilityOfTraveling_util_hr" value="-107.61" />
 		<param name="monetaryDistanceRate" value="-0.00784742" />
-		<param name="constant" value="230" />
+		<param name="constant" value="20" />
 	</parameterset>
 	</module>
 
@@ -224,7 +232,7 @@
 
 		<parameterset type="strategysettings" >
 			<param name="strategyName" value="ChangeSingleTripMode" />
-			<param name="weight" value="0.01" />
+			<param name="weight" value="0.3" />
 		</parameterset>
 
 		<parameterset type="strategysettings" >
@@ -232,7 +240,7 @@
 			<param name="executionPath" value="null" />
 			<param name="strategyName" value="SubtourModeChoice" />
 			<param name="subpopulation" value="null" />
-			<param name="weight" value="0.01" />
+			<param name="weight" value="0.3" />
 		</parameterset>
 
 	</module>
@@ -240,7 +248,7 @@
 
 	<module name="changeMode" >
 		<param name="ignoreCarAvailability" value="true" />
-		<param name="modes" value="car,pt,motorcycle,drt_autonomous,drt_autonomousForCarSharing,drt_autonomousForRideSharing" />
+		<param name="modes" value="car,walk,drt_autonomous,drt_autonomousForCarSharing,drt_autonomousForRideSharing" />
 	</module>
 
 	<module name="subtourModeChoice" >
@@ -274,6 +282,8 @@
 			<param name="teleportedModeFreespeedFactor" value="3.0" />
 			<param name="beelineDistanceFactor" value="null"/>
 		</parameterset>
+
+
 	</module>
 
 </config>
